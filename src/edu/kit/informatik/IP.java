@@ -61,7 +61,7 @@ public class IP implements Comparable<IP> {
             }
             if (num <= HIGHEST_VALUE && num >= 0) {
                 this.ip = this.ip | num;
-                this.ip = this.ip << 8;
+                this.ip = this.ip << NEXT_BIT_SHIFT_STEP;
 
             } else {
                 throw new ParseException("number is out of range");
