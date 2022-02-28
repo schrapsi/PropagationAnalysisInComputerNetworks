@@ -10,6 +10,12 @@ import edu.kit.informatik.exceptions.ParseException;
  */
 public class IP implements Comparable<IP> {
 
+    private static final int REQUIRED_NUMBERS = 4;
+    private static final int HIGHEST_VALUE = 255;
+    private static final long BIT_MASK = 255;
+    private static final short FIRST_BIT_SHIFT = 32;
+    private static final int SECOND_BIT_SHIFT = 24;
+    private static final int NEXT_BIT_SHIFT_STEP = 8;
     private long ip;
 
     /**
@@ -32,7 +38,7 @@ public class IP implements Comparable<IP> {
             throw new ParseException("not enough or to many dots");
         }
         String[] numbers = pointNotation.split("\\.");
-        if (numbers.length != 4) {
+        if (numbers.length != REQUIRED_NUMBERS) {
             throw new ParseException("not enough numbers");
         }
         for (String numberAsString : numbers) {
@@ -53,7 +59,7 @@ public class IP implements Comparable<IP> {
             } catch (NumberFormatException e) {
                 throw new ParseException(("input is not a number"));
             }
-            if (num <= 255 && num >= 0) {
+            if (num <= HIGHEST_VALUE && num >= 0) {
                 this.ip = this.ip | num;
                 this.ip = this.ip << 8;
 
@@ -66,9 +72,9 @@ public class IP implements Comparable<IP> {
 
     @Override
     public String toString() {
-        String ipAsString = "" + ((this.ip >> 32) & 255);
-        for (int i = 24; i > 0; i = i - 8) {
-            ipAsString = ipAsString + "." + ((this.ip >> i) & 255);
+        String ipAsString = "" + ((this.ip >> FIRST_BIT_SHIFT) & BIT_MASK);
+        for (int i = SECOND_BIT_SHIFT; i > 0; i = i - NEXT_BIT_SHIFT_STEP) {
+            ipAsString = ipAsString + "." + ((this.ip >> i) & BIT_MASK);
         }
         return ipAsString;
     }

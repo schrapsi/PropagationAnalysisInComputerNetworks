@@ -25,6 +25,7 @@ import java.util.TreeSet;
 public class Network {
 
     private static final String ILLEGAL_TREE_TOPOLOGY = "Its not allowed to add a circular Graph";
+    private static final int SMALLEST_NOTATION_POSSIBLE = 17;
     private final Map<IP, TreeSet<IP>> treeTopology = new HashMap<>();
 
     /**
@@ -131,6 +132,7 @@ public class Network {
     }
 
     /**
+     * Returns a list of all nodes.
      * @return a list of all nodes existing in the tree topology
      */
     public List<IP> list() {
@@ -162,7 +164,7 @@ public class Network {
     }
 
     /**
-     * Disconnects an edge between ip1 and ip2 if the edge exists and if it's not the last edge,.
+     * Disconnects an edge between ip1 and ip2 if the edge exists and if it's not the last edge.
      *
      * @param ip1 input ip 1
      * @param ip2 input ip 2
@@ -191,6 +193,7 @@ public class Network {
     }
 
     /**
+     * Returns if the ip exists in the Tree.
      * @param ip ip input
      * @return if the ip input exists in the tree Topology
      */
@@ -382,7 +385,7 @@ public class Network {
             throw new ParseException("Null is not allowed");
         }
         int bracketCounter = 0;
-        if (bracketNotation.length() < 17) {
+        if (bracketNotation.length() < SMALLEST_NOTATION_POSSIBLE) {
             throw new ParseException("not enough chars vor a valid input");
         }
         if (bracketNotation.charAt(0) != '(' || bracketNotation.charAt(bracketNotation.length() - 1) != ')') {
@@ -425,6 +428,7 @@ public class Network {
         }
         return false;
     }
+
 
     @Override
     public boolean equals(Object o) {
