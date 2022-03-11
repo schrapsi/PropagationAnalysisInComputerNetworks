@@ -1,4 +1,4 @@
-package edu.kit.informatik;
+package edu.kit.informatik.network;
 
 import edu.kit.informatik.exceptions.InvalidTreeException;
 import edu.kit.informatik.exceptions.ParseException;
@@ -16,6 +16,7 @@ import java.util.TreeSet;
 
 /**
  * The Class Network models a network structure with different tree topology´s.
+ * The tree topology‘s are saved in an adjacency list.
  * It inherits useful methods for operations on the network structure.
  *
  * @author ucfoh
@@ -172,6 +173,7 @@ public class Network {
         if (this.adjacencyList.size() == 2) {
             return false;
         }
+        //checks if the nodes the edge exists
         if (this.adjacencyList.containsKey(ip1)
                 && this.adjacencyList.containsKey(ip2)
                 && this.adjacencyList.get(ip1).contains(ip2)
