@@ -174,8 +174,7 @@ public class Network {
             return false;
         }
         //checks if the nodes the edge exists
-        if (this.adjacencyList.containsKey(ip1)
-                && this.adjacencyList.containsKey(ip2)
+        if (contains(ip1) && contains(ip2)
                 && this.adjacencyList.get(ip1).contains(ip2)
                 && this.adjacencyList.get(ip2).contains(ip1)) {
             this.adjacencyList.get(ip1).remove(ip2);
