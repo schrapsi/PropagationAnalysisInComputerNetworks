@@ -51,6 +51,9 @@ public class IP implements Comparable<IP> {
             if (numberAsString.charAt(0) == '-') {
                 throw new ParseException("negative zero is not allowed");
             }
+            if (numberAsString.charAt(0) == '+') {
+                throw new ParseException("the symbol + is not allowed" );
+            }
         }
         for (String number : numbers) {
             int num;
