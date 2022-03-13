@@ -7,6 +7,8 @@ package edu.kit.informatik.exceptions;
  */
 public class ParseException extends Exception {
 
+    private static final long serialVersionUID = -4688107508137905858L;
+
     /**
      * Constructor for returning a given Message
      * @param message with the Error

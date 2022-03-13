@@ -8,6 +8,8 @@ package edu.kit.informatik.exceptions;
 
 public class InvalidTreeException extends RuntimeException {
 
+    private static final long serialVersionUID = 1681939588890840272L;
+
     /**
      * Constructor for returning a given Message
      * @param message with the Error
